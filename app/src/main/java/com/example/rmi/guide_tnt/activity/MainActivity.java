@@ -1,39 +1,38 @@
 package com.example.rmi.guide_tnt.activity;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.example.rmi.guide_tnt.model.Channel;
 import com.example.rmi.guide_tnt.model.Program;
 import com.example.rmi.guide_tnt.service.Webservice;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        new RetrieveFeedTask().execute();
-
+        new RetrieveFeedTask(this).execute();
     }
 
     class RetrieveFeedTask extends AsyncTask<Void, Void, String> {
 
         List<Channel> channels = null;
         Map<Channel, List<Program>> programs = null;
+        private Activity activity;
 
+        public RetrieveFeedTask(Activity activity) {
+            super();
+            this.activity = activity;
+        }
 
         @Override
         protected String doInBackground(Void... params) {
@@ -52,29 +51,19 @@ public class MainActivity extends AppCompatActivity {
             if (response == null) {
                 response = "ERROR";
             } else {
-                StringBuilder responseBuilder = new StringBuilder();
-                DateFormat dateFormat = SimpleDateFormat.getTimeInstance(DateFormat.SHORT, Locale.FRANCE);
-                dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+                RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
 
-//                for (Channel channel : channels) {
-//                    responseBuilder.append(channel.getName());
-//                    responseBuilder.append("\n");
-//                }
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
+                rv.setLayoutManager(linearLayoutManager);
+                rv.setHasFixedSize(true);
 
-
-                for (Channel channel : programs.keySet()) {
-                    responseBuilder.append(channel.getName() + "\n");
-                    for (Program program : programs.get(channel)) {
-                        responseBuilder.append(dateFormat.format(program.getStartDate()) + " " + program.getTitle());
-                        responseBuilder.append("\n");
-                    }
-                    responseBuilder.append("\n");
+                if (programs != null) {
+                    TonightAdapter tonightAdapter = new TonightAdapter(programs.get(new Channel(1, "toto", 1)));
+                    rv.setAdapter(tonightAdapter);
                 }
-
-
-                ((TextView) findViewById(R.id.content)).setText(responseBuilder.toString());
             }
-
         }
+
+
     }
 }

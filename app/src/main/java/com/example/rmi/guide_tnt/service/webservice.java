@@ -1,5 +1,6 @@
 package com.example.rmi.guide_tnt.service;
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.example.rmi.guide_tnt.model.Channel;
@@ -95,13 +96,26 @@ public class Webservice {
                 for (int i = 0; i < programsJSON.length(); i++) {
                     JSONObject programJSON = (org.json.JSONObject) programsJSON.get(i);
 
+                    Drawable thumb = null;
+                    String programImageUrl = programJSON.getString("icon");
+                    try {
+                        if(programImageUrl != null && programImageUrl.length() > 0) {
+                            URL thumbUrl = new URL(programImageUrl);
+                            thumb = Drawable.createFromStream(thumbUrl.openStream(), "src");
+                        }
+                    }
+                    catch (Exception e) {
+                        // handle it
+                    }
+
                     programs.add(new Program(
                             programJSON.getInt("id"),
                             programJSON.getString("title"),
                             programJSON.getString("description"),
                             new Date(programJSON.getLong("start") * 1000), // start and endate are in seconds, the Date constructor need ms.
                             new Date(programJSON.getLong("stop") * 1000),
-                            programJSON.getString("icon"),
+                            programImageUrl,
+                            thumb,
                             programJSON.getString("review"),
                             programJSON.getString("season"),
                             programJSON.getString("episode"),

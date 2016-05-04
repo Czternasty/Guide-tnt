@@ -1,5 +1,7 @@
 package com.example.rmi.guide_tnt.model;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.Date;
 
 /**
@@ -13,13 +15,14 @@ public class Program {
     protected Date startDate;
     protected Date endDate;
     protected String imageURL;
+    protected Drawable imageThumb;
     protected String review;
     protected String season;
     protected String episode;
     protected Integer rating;
     protected String category;
 
-    public Program(int id, String title, String description, Date startDate, Date endDate, String imageURL, String review, String season, String episode, Integer rating, String category) {
+    public Program(int id, String title, String description, Date startDate, Date endDate, String imageURL, Drawable thumb, String review, String season, String episode, Integer rating, String category) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -31,6 +34,7 @@ public class Program {
         this.episode = episode;
         this.rating = rating;
         this.category = category;
+        this.imageThumb = thumb;
     }
 
     public int getId() {
@@ -75,5 +79,9 @@ public class Program {
 
     public String getCategory() {
         return category;
+    }
+
+    public Drawable getImageThumb() {
+        return imageThumb;
     }
 }
