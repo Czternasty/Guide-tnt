@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
                 rv.setHasFixedSize(true);
 
                 if (programs != null) {
-                    TonightAdapter tonightAdapter = new TonightAdapter(programs.get(new Channel(1, "toto", 1)));
+                    TonightAdapter tonightAdapter = new TonightAdapter(programs);
                     rv.setAdapter(tonightAdapter);
                 }
             }
