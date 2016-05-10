@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv"
-        tools:listitem="@layout/tonight_program_card_layout" />
+        tools:listitem="@layout/tonight_program_card_layout"
+        android:layout_alignParentEnd="false" />
 
 </RelativeLayout>

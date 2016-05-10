@@ -98,15 +98,15 @@ public class Webservice {
 
                     Drawable thumb = null;
                     String programImageUrl = programJSON.getString("icon");
-                    try {
-                        if(programImageUrl != null && programImageUrl.length() > 0) {
-                            URL thumbUrl = new URL(programImageUrl);
-                            thumb = Drawable.createFromStream(thumbUrl.openStream(), "src");
-                        }
-                    }
-                    catch (Exception e) {
-                        // handle it
-                    }
+//                    try {
+//                        if(programImageUrl != null && programImageUrl.length() > 0) {
+//                            URL thumbUrl = new URL(programImageUrl);
+//                            thumb = Drawable.createFromStream(thumbUrl.openStream(), "src");
+//                        }
+//                    }
+//                    catch (Exception e) {
+//                        // handle it
+//                    }
 
                     programs.add(new Program(
                             programJSON.getInt("id"),
@@ -116,11 +116,11 @@ public class Webservice {
                             new Date(programJSON.getLong("stop") * 1000),
                             programImageUrl,
                             thumb,
-                            programJSON.getString("review"),
-                            programJSON.getString("season"),
-                            programJSON.getString("episode"),
+                            programJSON.isNull("review") ? null : programJSON.getString("review"),
+                            programJSON.isNull("season") ? null : programJSON.getString("season"),
+                            programJSON.isNull("episode") ? null :programJSON.getString("episode"),
                             programJSON.isNull("rating") ? null : programJSON.getInt("rating"),
-                            ""
+                            programJSON.isNull("category") ? null : programJSON.getString("category")
                     ));
                 }
             }

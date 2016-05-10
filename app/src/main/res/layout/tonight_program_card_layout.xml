@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardUseCompatPadding="true"
-    android:padding="2dp">
+    android:padding="0dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -19,7 +19,7 @@
 
         <ImageView
             android:layout_width="60dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/programImage"
             android:src="@android:drawable/ic_menu_gallery"
             android:focusable="false"
@@ -34,12 +34,14 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:measureWithLargestChild="false">
+            android:measureWithLargestChild="false"
+            android:weightSum="1"
+            android:layout_marginRight="1dp">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/programHeaderLayout">
 
                 <TextView
                     android:id="@+id/programHour"
@@ -49,7 +51,8 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold"
-                    android:paddingEnd="5dp" />
+                    android:paddingEnd="5dp"
+                    android:layout_alignParentStart="false" />
 
                 <TextView
                     android:id="@+id/programTitle"
@@ -58,15 +61,73 @@
                     android:text="Program title "
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:textStyle="bold"
+                    android:enabled="false"
+                    android:layout_toRightOf="@+id/programHour" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Season"
+                android:id="@+id/season"
+                android:layout_below="@+id/programHour"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentEnd="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:text="Category"
+                android:id="@+id/category"
+                android:textStyle="italic"
+                android:layout_below="@+id/season" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Lorem Ipsum, Lorem IpsumLorem IpsumLorem Ipsum"
-                android:id="@+id/programDescription" />
+                android:id="@+id/programDescriptionShort"
+                android:layout_below="@+id/category" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Lorem Ipsum, Lorem IpsumLorem IpsumLorem Ipsum"
+                android:id="@+id/programDescriptionFull"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/programDescriptionShort" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/telerama_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Critique Telerama: "
+                    android:id="@+id/review_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Lorem Ipsum, Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+                    android:id="@+id/telerama_text"
+                    android:elegantTextHeight="false"
+                    android:layout_alignParentStart="false"
+                    android:layout_alignParentEnd="false"
+                    android:layout_below="@+id/review_title" />
+            </RelativeLayout>
+
         </LinearLayout>
 
     </LinearLayout>
