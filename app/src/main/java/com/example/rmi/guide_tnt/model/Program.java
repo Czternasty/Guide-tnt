@@ -84,4 +84,12 @@ public class Program {
     public Drawable getImageThumb() {
         return imageThumb;
     }
+
+    public String getShortDescription() {
+        String res = description;
+        if (description.length() > 150) {
+            res = description.substring(0, 150) + "..."; // TODO : split the descriptionShort to a space, or a coma/dot, it will be more beautiful
+        }
+        return res;
+    }
 }

@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.rmi.guide_tnt.model.Channel;
 import com.example.rmi.guide_tnt.model.Program;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ public class TonightAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public TonightAdapter(Map<Channel, List<Program>> programs) {
         for (Channel channel : programs.keySet()) {
             items.add(channel);
-            for (Program program : programs.get(channel)) {
+            for (Program program : programs.get(channel).subList(0, Math.min(2, programs.get(channel).size()))) {
                 items.add(program);
             }
         }
@@ -56,21 +58,81 @@ public class TonightAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         if (holder instanceof ProgramViewHolder) {
-            ProgramViewHolder programViewHolder = (ProgramViewHolder) holder;
-            Program program = (Program) items.get(position);
+            final ProgramViewHolder programViewHolder = (ProgramViewHolder) holder;
+            final Program program = (Program) items.get(position);
 
-            programViewHolder.title.setText(program.getTitle());
-            String description = program.getDescription();
-            if (description.length() > 150) {
-                description = description.substring(0, 150) + "..."; // TODO : split the description to a space, or a coma/dot, it will be more beautiful
-            }
-            programViewHolder.description.setText(description);
-            programViewHolder.programImage.setImageDrawable(program.getImageThumb());
-
+            // Start date
             java.text.DateFormat timeInstance = new SimpleDateFormat("HH:mm", Locale.FRANCE);
             timeInstance.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
 
             programViewHolder.startTime.setText(timeInstance.format(program.getStartDate()));
+
+            // Title
+            programViewHolder.title.setText(program.getTitle());
+
+            // Season (and episode info) if available
+            StringBuffer seasonData = new StringBuffer();
+            if (program.getSeason() != null && program.getSeason().length() > 0)
+                seasonData.append("S" + program.getSeason());
+            if (program.getEpisode() != null && program.getEpisode().length() > 0)
+                seasonData.append("E" + program.getEpisode());
+
+            if (seasonData.length() > 0)
+                programViewHolder.season.setText(seasonData.toString());
+            else
+                programViewHolder.season.setVisibility(View.GONE);
+
+            // display the program's category if available
+            if (program.getCategory() != null && program.getCategory().length() > 0)
+                programViewHolder.category.setText(program.getCategory());
+
+
+//            // Rating
+//            if (program.getRating() != null) {
+//                for (int i = 0; i < program.getRating(); i++) {
+//                    ImageView imageView = new ImageView(((ProgramViewHolder) holder).cardView.getContext());
+//                    imageView.setImageResource(R.drawable.rate_heart);
+//
+//                    ((ProgramViewHolder) holder).programHeaderLayout.addView(imageView, 2 + i);
+//                }
+//            }
+
+
+            // Description
+            programViewHolder.descriptionShort.setText(program.getShortDescription());
+            programViewHolder.descriptionFull.setText(program.getDescription());
+            programViewHolder.descriptionFull.setVisibility(View.GONE);
+
+            // Review
+            if (program.getReview() != null && program.getReview().length() > 0)
+                programViewHolder.review.setText(program.getReview());
+            else {
+                programViewHolder.review.setText(null);
+                programViewHolder.reviewLayout.setVisibility(View.GONE);
+            }
+
+
+            // Image
+            if (program.getImageURL() != null)
+                Picasso.with(((ProgramViewHolder) holder).cardView.getContext())
+                        .load(program.getImageURL())
+                        .resize(200, 200)
+                        .centerCrop()
+                        .into(programViewHolder.programImage);
+
+
+            programViewHolder.cardView.setClickable(true);
+            programViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (programViewHolder.isCollapsed())
+                        programViewHolder.displayExpanded();
+                    else
+                        programViewHolder.displayCollapsed();
+                }
+            });
+
+
         } else {
             ChannelViewHolder channelViewHolder = (ChannelViewHolder) holder;
             Channel channel = (Channel) items.get(position);
@@ -94,19 +156,61 @@ public class TonightAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public static class ProgramViewHolder extends RecyclerView.ViewHolder {
+        public CardView cardView;
+
         public TextView title;
         public TextView startTime;
-        public CardView cardView;
-        public TextView description;
+        public TextView season;
+        public TextView category;
+        public TextView descriptionShort;
+        public TextView descriptionFull;
         public ImageView programImage;
+        public RelativeLayout programHeaderLayout;
+        public TextView review;
+        public RelativeLayout reviewLayout;
+
+        private boolean collapsed = true;
 
         public ProgramViewHolder(View view) {
             super(view);
             cardView = (CardView) view.findViewById(R.id.cv);
             title = (TextView) view.findViewById(R.id.programTitle);
             startTime = (TextView) view.findViewById(R.id.programHour);
-            description = (TextView) view.findViewById(R.id.programDescription);
+            descriptionShort = (TextView) view.findViewById(R.id.programDescriptionShort);
+            descriptionFull = (TextView) view.findViewById(R.id.programDescriptionFull);
             programImage = (ImageView) view.findViewById(R.id.programImage);
+            programHeaderLayout = (RelativeLayout) view.findViewById(R.id.programHeaderLayout);
+            season = (TextView) view.findViewById(R.id.season);
+            category = (TextView) view.findViewById(R.id.category);
+            reviewLayout = (RelativeLayout) view.findViewById(R.id.telerama_layout);
+            review = (TextView) view.findViewById(R.id.telerama_text);
+
+            programImage.setClickable(true);
+            programImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    descriptionShort.setVisibility(View.INVISIBLE);
+                }
+            });
+        }
+
+        public void displayExpanded() {
+            this.descriptionFull.setVisibility(View.VISIBLE);
+            this.descriptionShort.setVisibility(View.GONE);
+            if (this.review.getText() != null && this.review.getText().length() > 0)
+                this.reviewLayout.setVisibility(View.VISIBLE);
+            collapsed = false;
+        }
+
+        public void displayCollapsed() {
+            this.descriptionFull.setVisibility(View.GONE);
+            this.descriptionShort.setVisibility(View.VISIBLE);
+            this.reviewLayout.setVisibility(View.GONE);
+            collapsed = true;
+        }
+
+        public boolean isCollapsed() {
+            return collapsed;
         }
     }
 
