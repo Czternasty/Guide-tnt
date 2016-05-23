@@ -86,18 +86,6 @@ public class TonightAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             if (program.getCategory() != null && program.getCategory().length() > 0)
                 programViewHolder.category.setText(program.getCategory());
 
-
-//            // Rating
-//            if (program.getRating() != null) {
-//                for (int i = 0; i < program.getRating(); i++) {
-//                    ImageView imageView = new ImageView(((ProgramViewHolder) holder).cardView.getContext());
-//                    imageView.setImageResource(R.drawable.rate_heart);
-//
-//                    ((ProgramViewHolder) holder).programHeaderLayout.addView(imageView, 2 + i);
-//                }
-//            }
-
-
             // Description
             programViewHolder.descriptionShort.setText(program.getShortDescription());
             programViewHolder.descriptionFull.setText(program.getDescription());
