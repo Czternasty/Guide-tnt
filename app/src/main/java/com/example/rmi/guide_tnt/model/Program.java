@@ -1,6 +1,7 @@
 package com.example.rmi.guide_tnt.model;
 
 import android.graphics.drawable.Drawable;
+import android.text.format.DateUtils;
 
 import java.util.Date;
 
@@ -91,5 +92,13 @@ public class Program {
             res = description.substring(0, 150) + "..."; // TODO : split the descriptionShort to a space, or a coma/dot, it will be more beautiful
         }
         return res;
+    }
+
+    /**
+     * Return the program duration in min
+     * @return
+     */
+    public long getDuration(){
+        return (endDate.getTime() - startDate.getTime())/ (1000*60);
     }
 }

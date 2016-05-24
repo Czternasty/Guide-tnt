@@ -98,15 +98,62 @@ public class Webservice {
 
                     Drawable thumb = null;
                     String programImageUrl = programJSON.getString("icon");
-//                    try {
-//                        if(programImageUrl != null && programImageUrl.length() > 0) {
-//                            URL thumbUrl = new URL(programImageUrl);
-//                            thumb = Drawable.createFromStream(thumbUrl.openStream(), "src");
-//                        }
-//                    }
-//                    catch (Exception e) {
-//                        // handle it
-//                    }
+
+                    programs.add(new Program(
+                            programJSON.getInt("id"),
+                            programJSON.getString("title"),
+                            programJSON.getString("description"),
+                            new Date(programJSON.getLong("start") * 1000), // start and endate are in seconds, the Date constructor need ms.
+                            new Date(programJSON.getLong("stop") * 1000),
+                            programImageUrl,
+                            thumb,
+                            programJSON.isNull("review") ? null : programJSON.getString("review"),
+                            programJSON.isNull("season") ? null : programJSON.getString("season"),
+                            programJSON.isNull("episode") ? null :programJSON.getString("episode"),
+                            programJSON.isNull("rating") ? null : programJSON.getInt("rating"),
+                            programJSON.isNull("category") ? null : programJSON.getString("category")
+                    ));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        return programsByChannel;
+    }
+
+    /**
+     * Provide a list of programs at a given timestamp (and a bit before, and a bigger bit after the timestamp) for each channel .
+     *
+     * @return A map where keys are channel's ids and values are programs
+     */
+    public static Map<Channel, List<Program>> getProgramsAtTime(Date date) {
+        String requestResult = executeRequest("grid[?time="+date.getTime()+"]");
+
+        if (requestResult == null) {
+            return null;
+        }
+
+        SortedMap<Channel, List<Program>> programsByChannel = new TreeMap<>();
+
+        List<Channel> channels = getChannels();
+
+        try {
+            JSONObject JSONObject = (JSONObject) new JSONTokener(requestResult).nextValue();
+            JSONObject data = JSONObject.getJSONObject("data");
+            for (Channel channel : channels) {
+
+                ArrayList<Program> programs = new ArrayList<>();
+                programsByChannel.put(channel, programs);
+
+                JSONObject channelProgramsJSON = data.getJSONObject(Integer.toString(channel.getId()));
+                JSONArray programsJSON = channelProgramsJSON.getJSONArray("programs");
+                for (int i = 0; i < programsJSON.length(); i++) {
+                    JSONObject programJSON = (org.json.JSONObject) programsJSON.get(i);
+
+                    Drawable thumb = null;
+                    String programImageUrl = programJSON.getString("icon");
 
                     programs.add(new Program(
                             programJSON.getInt("id"),
