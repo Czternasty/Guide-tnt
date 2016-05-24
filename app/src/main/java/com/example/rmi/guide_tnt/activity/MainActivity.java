@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, TonightFragment.OnFragmentInteractionListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, TonightFragment.OnFragmentInteractionListener, CurrentProgramFragment.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -49,12 +49,19 @@ public class MainActivity extends Activity
     }
 
     private Fragment getFragment(int sectionNumber) {
-        if (sectionNumber == 0) {
-            TonightFragment tonightFragment = new TonightFragment();
-            return tonightFragment;
+        Fragment fragment;
+        switch (sectionNumber) {
+            case 0:
+                fragment = new TonightFragment();
+                break;
+            case 1:
+                fragment = new CurrentProgramFragment();
+                break;
+            default:
+                fragment = PlaceholderFragment.newInstance();
+                break;
         }
-
-        return PlaceholderFragment.newInstance();
+        return fragment;
     }
 
     public void onSectionAttached(int number) {
