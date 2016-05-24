@@ -11,12 +11,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.rmi.guide_tnt.model.Channel;
 import com.example.rmi.guide_tnt.model.Program;
 import com.example.rmi.guide_tnt.service.Webservice;
+import com.squareup.picasso.Picasso;
 
 import java.util.Date;
 import java.util.List;
@@ -138,7 +140,20 @@ public class CurrentProgramFragment extends Fragment {
                 LinearLayout mainContainer = (LinearLayout) activity.findViewById(R.id.programContainer);
                 mainContainer.removeAllViews();
 
+                LinearLayout channelLayout = (LinearLayout) activity.findViewById(R.id.channelLayout);
+                channelLayout.removeAllViews();
+
+                int i = 1;
                 for (Channel channel : channels) {
+
+                    ImageView channelIcon = new ImageView(activity);
+                    Picasso.with(activity)
+                            .load("http://www.guide-tnt.fr/images/channels/logo"+i+++".gif")
+                            .resize(55, 55)
+                            .centerInside()
+                            .into(channelIcon);
+                    channelIcon.setLayoutParams(new LinearLayout.LayoutParams(55, 55));
+                    channelLayout.addView(channelIcon);
 
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     LinearLayout layout = new LinearLayout(activity);
@@ -151,7 +166,7 @@ public class CurrentProgramFragment extends Fragment {
                             continue;
 
                         TextView programTextView = new TextView(activity);
-                        programTextView.setLayoutParams(new LinearLayout.LayoutParams(programWidthComputation(program), ViewGroup.LayoutParams.WRAP_CONTENT));
+                        programTextView.setLayoutParams(new LinearLayout.LayoutParams(programWidthComputation(program), 55));
                         programTextView.setText(program.getTitle());
                         programTextView.setLines(1);
                         programTextView.setTextSize(12);
