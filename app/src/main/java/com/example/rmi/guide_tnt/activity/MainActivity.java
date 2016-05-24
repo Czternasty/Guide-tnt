@@ -1,69 +1,118 @@
 package com.example.rmi.guide_tnt.activity;
 
+import android.app.ActionBar;
 import android.app.Activity;
-import android.os.AsyncTask;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v4.widget.DrawerLayout;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.example.rmi.guide_tnt.model.Channel;
-import com.example.rmi.guide_tnt.model.Program;
-import com.example.rmi.guide_tnt.service.Webservice;
+public class MainActivity extends Activity
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, TonightFragment.OnFragmentInteractionListener {
 
-import java.util.List;
-import java.util.Map;
+    /**
+     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
+     */
+    private NavigationDrawerFragment mNavigationDrawerFragment;
 
-public class MainActivity extends Activity {
+    /**
+     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
+     */
+    private CharSequence mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new RetrieveFeedTask(this).execute();
+
+        mNavigationDrawerFragment = (NavigationDrawerFragment)
+                getFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mTitle = getTitle();
+
+        // Set up the drawer.
+        mNavigationDrawerFragment.setUp(
+                R.id.navigation_drawer,
+                (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
-    class RetrieveFeedTask extends AsyncTask<Void, Void, String> {
+    @Override
+    public void onNavigationDrawerItemSelected(int position) {
+        // update the main content by replacing fragments
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, getFragment(position))
+                .commit();
+    }
 
-        List<Channel> channels = null;
-        Map<Channel, List<Program>> programs = null;
-        private Activity activity;
+    private Fragment getFragment(int sectionNumber) {
+        if (sectionNumber == 0) {
+            TonightFragment tonightFragment = new TonightFragment();
+            return tonightFragment;
+        }
 
-        public RetrieveFeedTask(Activity activity) {
-            super();
-            this.activity = activity;
+        return PlaceholderFragment.newInstance();
+    }
+
+    public void onSectionAttached(int number) {
+        switch (number) {
+            case 1:
+                mTitle = getString(R.string.title_section1);
+                break;
+            case 2:
+                mTitle = getString(R.string.title_section2);
+                break;
+            case 3:
+                mTitle = getString(R.string.title_section3);
+                break;
+        }
+    }
+
+    public void restoreActionBar() {
+        ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle(mTitle);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    public static class PlaceholderFragment extends Fragment {
+
+        public PlaceholderFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static Fragment newInstance() {
+
+            PlaceholderFragment fragment = new PlaceholderFragment();
+            return fragment;
+
         }
 
         @Override
-        protected String doInBackground(Void... params) {
-            try {
-                channels = Webservice.getChannels();
-                programs = Webservice.getProgramsTonight();
-                return "OK";
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage(), e);
-            }
-            return null;
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            return rootView;
         }
 
         @Override
-        protected void onPostExecute(String response) {
-            if (response == null) {
-                response = "ERROR";
-            } else {
-                RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
-
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
-                rv.setLayoutManager(linearLayoutManager);
-                rv.setHasFixedSize(true);
-
-                if (programs != null) {
-                    TonightAdapter tonightAdapter = new TonightAdapter(programs);
-                    rv.setAdapter(tonightAdapter);
-                }
-            }
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
         }
-
-
     }
+
 }
