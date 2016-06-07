@@ -20,6 +20,8 @@ import com.example.rmi.guide_tnt.model.Program;
 import com.example.rmi.guide_tnt.service.Webservice;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -140,29 +142,72 @@ public class CurrentProgramFragment extends Fragment {
                 LinearLayout mainContainer = (LinearLayout) activity.findViewById(R.id.programContainer);
                 mainContainer.removeAllViews();
 
-                LinearLayout channelLayout = (LinearLayout) activity.findViewById(R.id.channelLayout);
-                channelLayout.removeAllViews();
+                LinearLayout channelsLayout = (LinearLayout) activity.findViewById(R.id.channelLayout);
+                channelsLayout.removeAllViews();
+
+                ImageView timeIcon = new ImageView(activity);
+                Picasso.with(activity)
+                        .load("https://cdn0.iconfinder.com/data/icons/feather/96/clock-128.png")
+                        .resize(55, 55)
+                        .centerInside()
+                        .into(timeIcon);
+
+                timeIcon.setLayoutParams(new LinearLayout.LayoutParams(55, 55));
+                channelsLayout.addView(timeIcon);
+
+                LinearLayout layout = new LinearLayout(activity);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layout.setOrientation(LinearLayout.HORIZONTAL);
+                layout.setLayoutParams(layoutParams);
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(requestedDate);
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
+                calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) - 1);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+                for (int i = 0; i < 8; i++) {
+                    Date tmpStartDate = calendar.getTime();
+                    calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 1);
+                    Date tmpEndDate = calendar.getTime();
+                    TextView programTextView = new TextView(activity);
+                    int width = convertTimeToWidth(tmpStartDate, tmpEndDate);
+                    programTextView.setLayoutParams(new LinearLayout.LayoutParams(width, 55));
+                    if(width > (420/2)) {
+                        programTextView.setText(dateFormat.format(tmpStartDate));
+                        programTextView.setPadding(10,0,0,0);
+                    }
+                    programTextView.setLines(1);
+                    programTextView.setTextSize(12);
+                    programTextView.setBackgroundResource(R.drawable.background_border);
+
+
+                    layout.addView(programTextView);
+                }
+                mainContainer.addView(layout);
+
 
                 int i = 1;
                 for (Channel channel : channels) {
 
                     ImageView channelIcon = new ImageView(activity);
                     Picasso.with(activity)
-                            .load("http://www.guide-tnt.fr/images/channels/logo"+i+++".gif")
+                            .load("http://www.guide-tnt.fr/images/channels/logo" + i++ + ".gif")
                             .resize(55, 55)
                             .centerInside()
                             .into(channelIcon);
                     channelIcon.setLayoutParams(new LinearLayout.LayoutParams(55, 55));
-                    channelLayout.addView(channelIcon);
+                    channelsLayout.addView(channelIcon);
 
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    LinearLayout layout = new LinearLayout(activity);
+                    layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    layout = new LinearLayout(activity);
                     layout.setOrientation(LinearLayout.HORIZONTAL);
                     layout.setLayoutParams(layoutParams);
 
                     for (Program program : programs.get(channel)) {
 
-                        if(program.getEndDate().getTime() < (requestedDate.getTime() - 60 * 60 * 1000))
+                        if (program.getEndDate().getTime() < (requestedDate.getTime() - 60 * 60 * 1000))
                             continue;
 
                         TextView programTextView = new TextView(activity);
@@ -172,7 +217,7 @@ public class CurrentProgramFragment extends Fragment {
                         programTextView.setTextSize(12);
                         programTextView.setEllipsize(TextUtils.TruncateAt.END);
                         programTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                        if(programInProgress(program)) {
+                        if (programInProgress(program)) {
                             programTextView.setBackgroundResource(R.drawable.background_border2);
                         } else {
                             programTextView.setBackgroundResource(R.drawable.background_border);
@@ -189,13 +234,17 @@ public class CurrentProgramFragment extends Fragment {
 
 
         private int programWidthComputation(Program program) {
-            long currentTimeStamp = requestedDate.getTime();
-            long minimalVisibleTimeStamp = currentTimeStamp - 60 * 60 * 1000; // current time minus 15min
-            long programDuration = program.getEndDate().getTime() - Math.max(program.getStartDate().getTime(), minimalVisibleTimeStamp);
-            return (int) (programDuration/(1000*60) * 7);
+            return convertTimeToWidth(program.getStartDate(), program.getEndDate());
         }
 
-        private boolean programInProgress(Program program){
+        private int convertTimeToWidth(Date startDate, Date endDate) {
+            long currentTimeStamp = requestedDate.getTime();
+            long minimalVisibleTimeStamp = currentTimeStamp - 60 * 60 * 1000; // current time minus 1h
+            long programDuration = endDate.getTime() - Math.max(startDate.getTime(), minimalVisibleTimeStamp);
+            return (int) (programDuration / (1000 * 60) * 7);
+        }
+
+        private boolean programInProgress(Program program) {
             return program.getStartDate().before(requestedDate) && program.getEndDate().after(requestedDate);
         }
     }
