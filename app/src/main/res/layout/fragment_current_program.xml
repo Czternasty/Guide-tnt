@@ -21,8 +21,9 @@
                 android:orientation="vertical"
                 android:layout_width="30dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/channelLayout"
-                android:paddingLeft="2dp"></LinearLayout>
+                android:id="@+id/channelsContainer"
+                android:paddingLeft="2dp"
+                android:background="#f0f0f0"></LinearLayout>
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView2"
@@ -34,7 +35,7 @@
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:id="@+id/programContainer"
+                        android:id="@+id/programsContainer"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_gravity="left|top"

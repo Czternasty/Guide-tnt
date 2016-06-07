@@ -26,17 +26,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CurrentProgramFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CurrentProgramFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CurrentProgramFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private final static int ICON_SIZE = 55;
 
     public CurrentProgramFragment() {
         // Required empty public constructor
@@ -125,7 +118,7 @@ public class CurrentProgramFragment extends Fragment {
             try {
                 channels = Webservice.getChannels();
                 requestedDate = new Date();
-                programs = Webservice.getProgramsAtTime(requestedDate); // TODO use correct WS
+                programs = Webservice.getProgramsAtTime(requestedDate);
                 return "OK";
             } catch (Exception e) {
                 Log.e("Error", e.getMessage(), e);
@@ -138,72 +131,37 @@ public class CurrentProgramFragment extends Fragment {
             if (response == null) {
                 response = "ERROR";
             } else {
-                // build view
-                LinearLayout mainContainer = (LinearLayout) activity.findViewById(R.id.programContainer);
-                mainContainer.removeAllViews();
 
-                LinearLayout channelsLayout = (LinearLayout) activity.findViewById(R.id.channelLayout);
-                channelsLayout.removeAllViews();
+                // Retrieve the container for programs, and also for channels
+                LinearLayout programsContainer = (LinearLayout) activity.findViewById(R.id.programsContainer);
+                programsContainer.removeAllViews();
 
-                ImageView timeIcon = new ImageView(activity);
-                Picasso.with(activity)
-                        .load("https://cdn0.iconfinder.com/data/icons/feather/96/clock-128.png")
-                        .resize(55, 55)
-                        .centerInside()
-                        .into(timeIcon);
+                LinearLayout channelsContainer = (LinearLayout) activity.findViewById(R.id.channelsContainer);
+                channelsContainer.removeAllViews();
 
-                timeIcon.setLayoutParams(new LinearLayout.LayoutParams(55, 55));
-                channelsLayout.addView(timeIcon);
-
-                LinearLayout layout = new LinearLayout(activity);
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                layout.setOrientation(LinearLayout.HORIZONTAL);
-                layout.setLayoutParams(layoutParams);
-
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(requestedDate);
-                calendar.set(Calendar.MINUTE, 0);
-                calendar.set(Calendar.SECOND, 0);
-                calendar.set(Calendar.MILLISECOND, 0);
-                calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) - 1);
-                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-                for (int i = 0; i < 8; i++) {
-                    Date tmpStartDate = calendar.getTime();
-                    calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 1);
-                    Date tmpEndDate = calendar.getTime();
-                    TextView programTextView = new TextView(activity);
-                    int width = convertTimeToWidth(tmpStartDate, tmpEndDate);
-                    programTextView.setLayoutParams(new LinearLayout.LayoutParams(width, 55));
-                    if(width > (420/2)) {
-                        programTextView.setText(dateFormat.format(tmpStartDate));
-                        programTextView.setPadding(10,0,0,0);
-                    }
-                    programTextView.setLines(1);
-                    programTextView.setTextSize(12);
-                    programTextView.setBackgroundResource(R.drawable.background_border);
-
-
-                    layout.addView(programTextView);
-                }
-                mainContainer.addView(layout);
-
+                // create first line with times
+                // icon = clock, then 1 cell per hour
+                createTimesHeader(programsContainer, channelsContainer);
+                LinearLayout.LayoutParams layoutParams;
+                LinearLayout channelProgramsLayout;
 
                 int i = 1;
                 for (Channel channel : channels) {
 
+
                     ImageView channelIcon = new ImageView(activity);
                     Picasso.with(activity)
                             .load("http://www.guide-tnt.fr/images/channels/logo" + i++ + ".gif")
-                            .resize(55, 55)
+                            .resize(ICON_SIZE, ICON_SIZE)
                             .centerInside()
                             .into(channelIcon);
-                    channelIcon.setLayoutParams(new LinearLayout.LayoutParams(55, 55));
-                    channelsLayout.addView(channelIcon);
+                    channelIcon.setLayoutParams(new LinearLayout.LayoutParams(ICON_SIZE, ICON_SIZE));
+                    channelsContainer.addView(channelIcon);
 
                     layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    layout = new LinearLayout(activity);
-                    layout.setOrientation(LinearLayout.HORIZONTAL);
-                    layout.setLayoutParams(layoutParams);
+                    channelProgramsLayout = new LinearLayout(activity);
+                    channelProgramsLayout.setOrientation(LinearLayout.HORIZONTAL);
+                    channelProgramsLayout.setLayoutParams(layoutParams);
 
                     for (Program program : programs.get(channel)) {
 
@@ -218,13 +176,13 @@ public class CurrentProgramFragment extends Fragment {
                         programTextView.setEllipsize(TextUtils.TruncateAt.END);
                         programTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                         if (programInProgress(program)) {
-                            programTextView.setBackgroundResource(R.drawable.background_border2);
+                            programTextView.setBackgroundResource(R.drawable.background_program_in_progress);
                         } else {
-                            programTextView.setBackgroundResource(R.drawable.background_border);
+                            programTextView.setBackgroundResource(R.drawable.background_program_default);
                         }
-                        layout.addView(programTextView);
+                        channelProgramsLayout.addView(programTextView);
                     }
-                    mainContainer.addView(layout);
+                    programsContainer.addView(channelProgramsLayout);
                 }
 
             }
@@ -232,20 +190,73 @@ public class CurrentProgramFragment extends Fragment {
 
         }
 
+        private void createTimesHeader(LinearLayout programsContainer, LinearLayout channelsContainer) {
+            ImageView clockIcon = new ImageView(activity);
+            Picasso.with(activity)
+                    .load("https://cdn0.iconfinder.com/data/icons/feather/96/clock-128.png") // TODO use a local resource?
+                    .resize(ICON_SIZE, ICON_SIZE)
+                    .centerInside()
+                    .into(clockIcon);
 
-        private int programWidthComputation(Program program) {
-            return convertTimeToWidth(program.getStartDate(), program.getEndDate());
+            clockIcon.setLayoutParams(new LinearLayout.LayoutParams(ICON_SIZE, ICON_SIZE));
+            channelsContainer.addView(clockIcon);
+
+            LinearLayout layout = new LinearLayout(activity);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layout.setOrientation(LinearLayout.HORIZONTAL);
+            layout.setLayoutParams(layoutParams);
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+
+            // get the requested date with hour precision, then get the hour before (as we display programs only 1hour before requested date)
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(requestedDate);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
+            calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) - 1);
+
+            // display layout of 1hour length (except for the first one)
+            for (int i = 0; i < 8; i++) {
+                Date tmpStartDate = calendar.getTime();
+                calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 1);
+                Date tmpEndDate = calendar.getTime();
+                TextView timeTextView = new TextView(activity);
+                int width = convertDurationToWidth(tmpStartDate, tmpEndDate);
+                timeTextView.setLayoutParams(new LinearLayout.LayoutParams(width, 55));
+
+                // only display the time if there is enough place
+                if (width > HOUR_WIDTH / 2) {
+                    timeTextView.setText(dateFormat.format(tmpStartDate));
+                    timeTextView.setPadding(10, 0, 0, 0);
+                }
+                timeTextView.setLines(1);
+                timeTextView.setTextSize(12);
+                timeTextView.setBackgroundResource(R.drawable.background_program_header);
+
+
+                layout.addView(timeTextView);
+            }
+            programsContainer.addView(layout);
         }
 
-        private int convertTimeToWidth(Date startDate, Date endDate) {
+
+        private int programWidthComputation(Program program) {
+            return convertDurationToWidth(program.getStartDate(), program.getEndDate());
+        }
+
+        private int convertDurationToWidth(Date startDate, Date endDate) {
             long currentTimeStamp = requestedDate.getTime();
             long minimalVisibleTimeStamp = currentTimeStamp - 60 * 60 * 1000; // current time minus 1h
-            long programDuration = endDate.getTime() - Math.max(startDate.getTime(), minimalVisibleTimeStamp);
-            return (int) (programDuration / (1000 * 60) * 7);
+            long programDuration = endDate.getTime() - Math.max(startDate.getTime(), minimalVisibleTimeStamp); // duration in ms
+            return (int) Math.round(programDuration * HOUR_WIDTH / (60.0 * 60.0 *1000.0));
         }
 
         private boolean programInProgress(Program program) {
             return program.getStartDate().before(requestedDate) && program.getEndDate().after(requestedDate);
         }
+
+        // size of a 1h program
+        private static final int HOUR_WIDTH = 420; // /!\  per hour in hour, not per hour in ms /!\
     }
 }
