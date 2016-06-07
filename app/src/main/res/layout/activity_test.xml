@@ -36,7 +36,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -48,7 +48,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -62,7 +62,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -73,7 +73,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -85,7 +85,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
             </LinearLayout>
@@ -104,7 +104,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -116,7 +116,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -130,7 +130,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -141,7 +141,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -153,7 +153,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -171,7 +171,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -183,7 +183,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -197,7 +197,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -208,7 +208,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -220,7 +220,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -238,7 +238,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -250,7 +250,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -264,7 +264,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -275,7 +275,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -287,7 +287,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -305,7 +305,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -317,7 +317,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -331,7 +331,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -342,7 +342,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -354,7 +354,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -372,7 +372,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -384,7 +384,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -398,7 +398,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -409,7 +409,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -421,7 +421,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -439,7 +439,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -451,7 +451,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -465,7 +465,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -476,7 +476,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -488,7 +488,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -506,7 +506,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -518,7 +518,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -532,7 +532,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -543,7 +543,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -555,7 +555,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -573,7 +573,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -585,7 +585,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -599,7 +599,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -610,7 +610,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -622,7 +622,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -640,7 +640,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -652,7 +652,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -666,7 +666,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -677,7 +677,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -689,7 +689,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -707,7 +707,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -719,7 +719,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -733,7 +733,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -744,7 +744,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -756,7 +756,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -774,7 +774,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -786,7 +786,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -800,7 +800,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -811,7 +811,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -823,7 +823,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -841,7 +841,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -853,7 +853,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -867,7 +867,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -878,7 +878,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -890,7 +890,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -908,7 +908,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -920,7 +920,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -934,7 +934,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -945,7 +945,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -957,7 +957,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -975,7 +975,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -987,7 +987,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1001,7 +1001,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1012,7 +1012,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1024,7 +1024,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1042,7 +1042,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1054,7 +1054,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1068,7 +1068,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1079,7 +1079,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -1091,7 +1091,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1109,7 +1109,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1121,7 +1121,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1135,7 +1135,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1146,7 +1146,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -1158,7 +1158,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1176,7 +1176,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1188,7 +1188,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1202,7 +1202,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1213,7 +1213,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -1225,7 +1225,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1243,7 +1243,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1255,7 +1255,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1269,7 +1269,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1280,7 +1280,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -1292,7 +1292,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1310,7 +1310,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1322,7 +1322,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1336,7 +1336,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1347,7 +1347,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1359,7 +1359,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1377,7 +1377,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1389,7 +1389,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1403,7 +1403,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1414,7 +1414,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1426,7 +1426,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1444,7 +1444,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1456,7 +1456,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1470,7 +1470,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border" />
+                    android:background="@drawable/background_program_default" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1481,7 +1481,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border2"
+                    android:background="@drawable/background_program_in_progress"
                     android:padding="1dp" />
 
                 <TextView
@@ -1493,7 +1493,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1511,7 +1511,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1523,7 +1523,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1537,7 +1537,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1548,7 +1548,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1560,7 +1560,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1578,7 +1578,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1590,7 +1590,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1604,7 +1604,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1615,7 +1615,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1627,7 +1627,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1645,7 +1645,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1657,7 +1657,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1671,7 +1671,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1682,7 +1682,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1694,7 +1694,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
 
@@ -1712,7 +1712,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1724,7 +1724,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1738,7 +1738,7 @@
                     android:textColor="#052080"
                     android:textAlignment="center"
                     android:padding="1dp"
-                    android:background="@drawable/background_border2" />
+                    android:background="@drawable/background_program_in_progress" />
 
                 <TextView
                     android:layout_width="62dp"
@@ -1749,7 +1749,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
 
                 <TextView
@@ -1761,7 +1761,7 @@
                     android:singleLine="true"
                     android:textSize="11sp"
                     android:textAlignment="center"
-                    android:background="@drawable/background_border"
+                    android:background="@drawable/background_program_default"
                     android:padding="1dp" />
             </LinearLayout>
         </LinearLayout>
