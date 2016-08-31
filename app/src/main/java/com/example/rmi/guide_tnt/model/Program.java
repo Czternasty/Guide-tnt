@@ -1,14 +1,14 @@
 package com.example.rmi.guide_tnt.model;
 
 import android.graphics.drawable.Drawable;
-import android.text.format.DateUtils;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Rémi on 13/04/2016.
  */
-public class Program {
+public class Program implements Serializable {
 
     private int id;
     protected String title;
@@ -96,9 +96,10 @@ public class Program {
 
     /**
      * Return the program duration in min
+     *
      * @return
      */
-    public long getDuration(){
-        return (endDate.getTime() - startDate.getTime())/ (1000*60);
+    public long getDuration() {
+        return (endDate.getTime() - startDate.getTime()) / (1000 * 60);
     }
 }
