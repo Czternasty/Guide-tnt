@@ -6,6 +6,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.v4.widget.NestedScrollView;
+import android.text.Layout;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.rmi.guide_tnt.model.Channel;
@@ -24,12 +28,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class CurrentProgramFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private final static int ICON_SIZE = 55;
+    private BottomSheetBehavior<NestedScrollView> mBottomSheetBehavior;
+    private NestedScrollView bottomSheet;
 
     public CurrentProgramFragment() {
         // Required empty public constructor
@@ -53,14 +61,20 @@ public class CurrentProgramFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         new RetrieveCurrentProgramsTask(getActivity()).execute();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_current_program, container, false);
+        View view = inflater.inflate(R.layout.fragment_current_program, container, false);
+
+        bottomSheet = (NestedScrollView) view.findViewById(R.id.bottom_sheet);
+        mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        return view;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -91,7 +105,7 @@ public class CurrentProgramFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
@@ -99,6 +113,25 @@ public class CurrentProgramFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    class OnClickListener implements View.OnClickListener {
+        Program program;
+
+        public OnClickListener(Program program) {
+            this.program = program;
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            ProgramDetailFragment programDetailFragment = ProgramDetailFragment.newInstance(program);
+
+//            bottomSheet.removeAllViews();
+//            bottomSheet.addView(programDetailFragment);
+
+//            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        }
     }
 
     class RetrieveCurrentProgramsTask extends AsyncTask<Void, Void, String> {
@@ -180,6 +213,8 @@ public class CurrentProgramFragment extends Fragment {
                         } else {
                             programTextView.setBackgroundResource(R.drawable.background_program_default);
                         }
+
+                        programTextView.setOnClickListener(new OnClickListener(program));
                         channelProgramsLayout.addView(programTextView);
                     }
                     programsContainer.addView(channelProgramsLayout);
@@ -249,7 +284,7 @@ public class CurrentProgramFragment extends Fragment {
             long currentTimeStamp = requestedDate.getTime();
             long minimalVisibleTimeStamp = currentTimeStamp - 60 * 60 * 1000; // current time minus 1h
             long programDuration = endDate.getTime() - Math.max(startDate.getTime(), minimalVisibleTimeStamp); // duration in ms
-            return (int) Math.round(programDuration * HOUR_WIDTH / (60.0 * 60.0 *1000.0));
+            return (int) Math.round(programDuration * HOUR_WIDTH / (60.0 * 60.0 * 1000.0));
         }
 
         private boolean programInProgress(Program program) {
@@ -258,5 +293,6 @@ public class CurrentProgramFragment extends Fragment {
 
         // size of a 1h program
         private static final int HOUR_WIDTH = 420; // /!\  per hour in hour, not per hour in ms /!\
+
     }
 }
