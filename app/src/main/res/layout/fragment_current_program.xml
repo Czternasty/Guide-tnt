@@ -3,7 +3,9 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:fitsSystemWindows="false">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -57,16 +59,18 @@
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@android:color/white"
+        android:layout_height="match_parent"
+        android:background="#EEEEEE"
         android:clipToPadding="true"
         app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+        app:behavior_peekHeight="200dp"
+        app:behavior_hideable="true"
         android:elevation="@dimen/design_bottom_sheet_modal_elevation">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:measureWithLargestChild="false"
             android:gravity="top"
             android:baselineAligned="false">
@@ -109,7 +113,7 @@
 
                     <TextView
                         android:id="@+id/programTitle"
-                        android:layout_width="fill_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Program title "
                         android:textAppearance="?android:attr/textAppearanceSmall"
@@ -150,7 +154,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:id="@+id/telerama_layout"
                     android:visibility="gone">
 

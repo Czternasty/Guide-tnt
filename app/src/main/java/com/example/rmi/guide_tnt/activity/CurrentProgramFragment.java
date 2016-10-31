@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.widget.NestedScrollView;
-import android.text.Layout;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.rmi.guide_tnt.LayoutWrapContentUpdater;
 import com.example.rmi.guide_tnt.model.Channel;
 import com.example.rmi.guide_tnt.model.Program;
 import com.example.rmi.guide_tnt.service.Webservice;
@@ -72,7 +72,8 @@ public class CurrentProgramFragment extends Fragment {
 
         bottomSheet = (NestedScrollView) view.findViewById(R.id.bottom_sheet);
         mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
-        return view;
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                return view;
     }
 
 
@@ -105,7 +106,7 @@ public class CurrentProgramFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
@@ -125,12 +126,68 @@ public class CurrentProgramFragment extends Fragment {
         @Override
         public void onClick(View view) {
 
-            ProgramDetailFragment programDetailFragment = ProgramDetailFragment.newInstance(program);
 
-//            bottomSheet.removeAllViews();
-//            bottomSheet.addView(programDetailFragment);
+            TextView title = (TextView) bottomSheet.findViewById(R.id.programTitle);
+            TextView startTime = (TextView) bottomSheet.findViewById(R.id.programHour);
+            TextView descriptionFull = (TextView) bottomSheet.findViewById(R.id.programDescriptionFull);
+            ImageView programImage = (ImageView) bottomSheet.findViewById(R.id.programImage);
+            RelativeLayout programHeaderLayout = (RelativeLayout) bottomSheet.findViewById(R.id.programHeaderLayout);
+            TextView season = (TextView) bottomSheet.findViewById(R.id.season);
+            TextView category = (TextView) bottomSheet.findViewById(R.id.category);
+            RelativeLayout reviewLayout = (RelativeLayout) bottomSheet.findViewById(R.id.telerama_layout);
+            TextView review = (TextView) bottomSheet.findViewById(R.id.telerama_text);
 
-//            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            // Start date
+            java.text.DateFormat timeInstance = new SimpleDateFormat("HH:mm", Locale.FRANCE);
+            timeInstance.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+
+            startTime.setText(timeInstance.format(program.getStartDate()));
+
+            // Title
+            title.setText(program.getTitle());
+
+            // Season (and episode info) if available
+            StringBuffer seasonData = new StringBuffer();
+            if (program.getSeason() != null && program.getSeason().length() > 0)
+                seasonData.append("S" + program.getSeason());
+            if (program.getEpisode() != null && program.getEpisode().length() > 0)
+                seasonData.append("E" + program.getEpisode());
+
+            if (seasonData.length() > 0)
+                season.setText(seasonData.toString());
+            else
+                season.setVisibility(View.GONE);
+
+            // display the program's category if available
+            if (program.getCategory() != null && program.getCategory().length() > 0)
+                category.setText(program.getCategory());
+
+            // Description
+            descriptionFull.setText(program.getDescription());
+
+            // Review
+            if (program.getReview() != null && program.getReview().length() > 0) {
+                review.setText(program.getReview());
+                reviewLayout.setVisibility(View.VISIBLE);
+            }
+            else {
+                review.setText(null);
+                reviewLayout.setVisibility(View.GONE);
+            }
+
+
+            // Image
+            if (program.getImageURL() != null)
+                Picasso.with(getActivity())
+                        .load(program.getImageURL())
+                        .resize(500, 500)
+                        .centerCrop()
+                        .into(programImage);
+
+            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+            LayoutWrapContentUpdater.wrapContentAgain(bottomSheet);
+
         }
     }
 

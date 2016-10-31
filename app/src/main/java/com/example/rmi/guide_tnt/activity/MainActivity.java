@@ -19,11 +19,6 @@ public class MainActivity extends Activity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
-    private CharSequence mTitle;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +26,6 @@ public class MainActivity extends Activity
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -46,6 +40,7 @@ public class MainActivity extends Activity
         fragmentManager.beginTransaction()
                 .replace(R.id.container, getFragment(position))
                 .commit();
+        onSectionAttached(position);
     }
 
     private Fragment getFragment(int sectionNumber) {
@@ -64,25 +59,26 @@ public class MainActivity extends Activity
         return fragment;
     }
 
+
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                setTitle(getString(R.string.title_section1));
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                setTitle(getString(R.string.title_section2));
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                setTitle(getString(R.string.title_section3));
                 break;
         }
     }
 
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+        actionBar.setTitle(getTitle());
     }
 
     @Override
