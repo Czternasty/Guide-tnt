@@ -68,9 +68,6 @@ public class MainActivity extends Activity
             case 2:
                 setTitle(getString(R.string.title_section2));
                 break;
-            case 3:
-                setTitle(getString(R.string.title_section3));
-                break;
         }
     }
 
